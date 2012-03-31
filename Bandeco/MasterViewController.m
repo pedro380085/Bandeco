@@ -9,25 +9,27 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
-
-@interface MasterViewController () {
-    NSMutableArray *_objects;
-}
-@end
+#import "SecondViewController.h"
+#import "DownloadController.h"
 
 @implementation MasterViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize secondViewController = _secondViewController;
+@synthesize daysOfWeek = _daysOfWeek;
+@synthesize menu = _menu;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Master", @"Master");
+        self.title = NSLocalizedString(@"Day", @"Day of the week");
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             self.clearsSelectionOnViewWillAppear = NO;
             self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         }
+        
+        //NSLog(@"%@", [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:[[NSLocale currentLocale] identifier]]);
     }
     return self;
 }
@@ -36,10 +38,28 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", @"About the developer") 
+                                                                     style:UIBarButtonItemStyleBordered target:self action:@selector(about:)];
+    self.navigationItem.leftBarButtonItem = aboutButton;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateData:)];
+    self.navigationItem.rightBarButtonItem = reloadButton;
+    
+    self.daysOfWeek = [[NSMutableArray alloc] initWithObjects:
+                         NSLocalizedString(@"Monday", @"Monday"), 
+                         NSLocalizedString(@"Tuesday", @"Tuesday"),
+                         NSLocalizedString(@"Wednesday", @"Wednesday"),
+                         NSLocalizedString(@"Thursday", @"Thursday"),
+                         NSLocalizedString(@"Friday", @"Friday"),
+                         NSLocalizedString(@"Saturday", @"Saturday"),
+                         NSLocalizedString(@"Sunday", @"Sunday"),
+                         nil];   
+
+    
+    keysDaysOfWeek = [[NSArray alloc] initWithObjects:@"segunda", @"terca", @"quarta", @"quinta", @"sexta", @"sabado", nil];
+    
+    
+    
 }
 
 - (void)viewDidUnload
@@ -57,15 +77,23 @@
     }
 }
 
-- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+- (void)updateData:(id)sender {
+    DownloadController * downloadController = [DownloadController sharedDownloadController];
+    downloadController.delegate = self;
+    [downloadController addURL:CACHE_PADRAO_URL savingAs:CACHE_PADRAO_ARQUIVO];
 }
+
+- (IBAction)about:(id)sender {
+	
+	UIAlertView *alert = [[UIAlertView alloc] 
+						  initWithTitle:NSLocalizedString(@"About", @"About the developer")  
+						  message:NSLocalizedString(@"AboutMessage", @"Message relating to the dev")   //@"Este programa calcula os valores de a e b incluindo seus erros (deltas) pelo Método dos Mínimos Quadrados.\n\nDesenvolvedor: Pedro P. M. Góes\n\nVersão atual: 1.2\nRelease: Março/2012\n\nAgora também disponível para Android!"
+						  delegate:self 
+						  cancelButtonTitle:@"Ok" 
+						  otherButtonTitles:nil];
+	[alert show];
+}
+	
 
 #pragma mark - Table View
 
@@ -76,7 +104,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [_daysOfWeek count];
 }
 
 // Customize the appearance of table view cells.
@@ -87,23 +115,20 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
     }
 
-
-    NSDate *object = [_objects objectAtIndex:indexPath.row];
-    cell.textLabel.text = [object description];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = [_daysOfWeek objectAtIndex:[indexPath row]];
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
+/*
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -113,6 +138,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
+*/
 
 /*
 // Override to support rearranging the table view.
@@ -132,7 +158,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = [_objects objectAtIndex:indexPath.row];
+    
+    if (!self.secondViewController) {
+        self.secondViewController = [[SecondViewController alloc] initWithNibName:nil bundle:nil];
+    }
+    
+    if ([indexPath row] == [_daysOfWeek count]-1) {
+        self.secondViewController.lastDayOfTheWeek = YES;
+    } else {
+        self.secondViewController.lastDayOfTheWeek = NO;
+    }
+    
+    self.secondViewController.title = NSLocalizedString(@"Time", @"The second or third meal");
+    self.secondViewController.infoMenu = [[self.menu objectForKey:@"restaurante"] objectForKey:[keysDaysOfWeek objectAtIndex:[indexPath row]]];
+    
+    [self.navigationController pushViewController:self.secondViewController animated:YES];
+    
+    /*
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 	    if (!self.detailViewController) {
 	        self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController_iPhone" bundle:nil];
@@ -142,6 +184,7 @@
     } else {
         self.detailViewController.detailItem = object;
     }
+     */
 }
 
 @end

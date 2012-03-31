@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class DetailViewController;
+@class SecondViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController {
+    NSArray *keysDaysOfWeek;
+}
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) SecondViewController *secondViewController;
+@property (strong, nonatomic) NSMutableArray *daysOfWeek;
+@property (strong, nonatomic) NSDictionary *menu;
 
 @end

@@ -19,6 +19,13 @@
 		EB48A1D5152660C8008DB3F9 /* MasterViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB48A1D3152660C8008DB3F9 /* MasterViewController_iPad.xib */; };
 		EB48A1D8152660C8008DB3F9 /* DetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB48A1D6152660C8008DB3F9 /* DetailViewController_iPhone.xib */; };
 		EB48A1DB152660C8008DB3F9 /* DetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB48A1D9152660C8008DB3F9 /* DetailViewController_iPad.xib */; };
+		EBC6F8E215266A7C00BC5A73 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC6F8E415266A7C00BC5A73 /* Localizable.strings */; };
+		EBC6F8F0152674BF00BC5A73 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8EF152674BF00BC5A73 /* SecondViewController.m */; };
+		EBC6F8F315267A2E00BC5A73 /* DownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8F215267A2E00BC5A73 /* DownloadController.m */; };
+		EBC6F8FA15267F6E00BC5A73 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC6F8F915267F6E00BC5A73 /* libxml2.dylib */; };
+		EBE423A61526A3D2009D194F /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8F615267DA200BC5A73 /* HTMLNode.m */; };
+		EBE423A71526A3D2009D194F /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8F815267DA200BC5A73 /* HTMLParser.m */; };
+		EBE423AB1526B66D009D194F /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE423AA1526B56C009D194F /* XMLReader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,20 +33,34 @@
 		EB48A1B8152660C8008DB3F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EB48A1BA152660C8008DB3F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB48A1BC152660C8008DB3F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EB48A1C0152660C8008DB3F9 /* Bandeco-Info.plist */ = {isa = PBXFileReference; path = "Bandeco-Info.plist"; sourceTree = "<group>"; };
+		EB48A1C0152660C8008DB3F9 /* Bandeco-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bandeco-Info.plist"; sourceTree = "<group>"; };
 		EB48A1C2152660C8008DB3F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB48A1C4152660C8008DB3F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EB48A1C6152660C8008DB3F9 /* Bandeco-Prefix.pch */ = {isa = PBXFileReference; path = "Bandeco-Prefix.pch"; sourceTree = "<group>"; };
-		EB48A1C7152660C8008DB3F9 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		EB48A1C6152660C8008DB3F9 /* Bandeco-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bandeco-Prefix.pch"; sourceTree = "<group>"; };
+		EB48A1C7152660C8008DB3F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EB48A1C8152660C8008DB3F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EB48A1CA152660C8008DB3F9 /* MasterViewController.h */ = {isa = PBXFileReference; path = MasterViewController.h; sourceTree = "<group>"; };
+		EB48A1CA152660C8008DB3F9 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		EB48A1CB152660C8008DB3F9 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		EB48A1CD152660C8008DB3F9 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		EB48A1CD152660C8008DB3F9 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		EB48A1CE152660C8008DB3F9 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		EB48A1D1152660C8008DB3F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPhone.xib; sourceTree = "<group>"; };
 		EB48A1D4152660C8008DB3F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPad.xib; sourceTree = "<group>"; };
 		EB48A1D7152660C8008DB3F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPhone.xib; sourceTree = "<group>"; };
 		EB48A1DA152660C8008DB3F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPad.xib; sourceTree = "<group>"; };
+		EBC6F8E315266A7C00BC5A73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBC6F8EA152670A000BC5A73 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		EBC6F8EE152674BF00BC5A73 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../SecondViewController.h; sourceTree = "<group>"; };
+		EBC6F8EF152674BF00BC5A73 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../SecondViewController.m; sourceTree = "<group>"; };
+		EBC6F8F115267A2E00BC5A73 /* DownloadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadController.h; sourceTree = "<group>"; };
+		EBC6F8F215267A2E00BC5A73 /* DownloadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadController.m; sourceTree = "<group>"; };
+		EBC6F8F515267DA200BC5A73 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		EBC6F8F615267DA200BC5A73 /* HTMLNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		EBC6F8F715267DA200BC5A73 /* HTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		EBC6F8F815267DA200BC5A73 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		EBC6F8F915267F6E00BC5A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		EBC6F916152681A200BC5A73 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		EBE423A91526B56C009D194F /* XMLReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		EBE423AA1526B56C009D194F /* XMLReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBC6F8FA15267F6E00BC5A73 /* libxml2.dylib in Frameworks */,
 				EB48A1B9152660C8008DB3F9 /* UIKit.framework in Frameworks */,
 				EB48A1BB152660C8008DB3F9 /* Foundation.framework in Frameworks */,
 				EB48A1BD152660C8008DB3F9 /* CoreGraphics.framework in Frameworks */,
@@ -60,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				EB48A1BE152660C8008DB3F9 /* Bandeco */,
+				EBE423A81526B556009D194F /* XML-Parser */,
+				EBC6F8F415267D9100BC5A73 /* HTML-Parser */,
 				EB48A1B7152660C8008DB3F9 /* Frameworks */,
 				EB48A1B5152660C8008DB3F9 /* Products */,
 			);
@@ -76,6 +100,7 @@
 		EB48A1B7152660C8008DB3F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBC6F8F915267F6E00BC5A73 /* libxml2.dylib */,
 				EB48A1B8152660C8008DB3F9 /* UIKit.framework */,
 				EB48A1BA152660C8008DB3F9 /* Foundation.framework */,
 				EB48A1BC152660C8008DB3F9 /* CoreGraphics.framework */,
@@ -86,12 +111,18 @@
 		EB48A1BE152660C8008DB3F9 /* Bandeco */ = {
 			isa = PBXGroup;
 			children = (
+				EBC6F8EA152670A000BC5A73 /* Constants.h */,
+				EBC6F916152681A200BC5A73 /* SynthesizeSingleton.h */,
 				EB48A1C7152660C8008DB3F9 /* AppDelegate.h */,
 				EB48A1C8152660C8008DB3F9 /* AppDelegate.m */,
 				EB48A1CA152660C8008DB3F9 /* MasterViewController.h */,
 				EB48A1CB152660C8008DB3F9 /* MasterViewController.m */,
+				EBC6F8EE152674BF00BC5A73 /* SecondViewController.h */,
+				EBC6F8EF152674BF00BC5A73 /* SecondViewController.m */,
 				EB48A1CD152660C8008DB3F9 /* DetailViewController.h */,
 				EB48A1CE152660C8008DB3F9 /* DetailViewController.m */,
+				EBC6F8F115267A2E00BC5A73 /* DownloadController.h */,
+				EBC6F8F215267A2E00BC5A73 /* DownloadController.m */,
 				EB48A1D0152660C8008DB3F9 /* MasterViewController_iPhone.xib */,
 				EB48A1D3152660C8008DB3F9 /* MasterViewController_iPad.xib */,
 				EB48A1D6152660C8008DB3F9 /* DetailViewController_iPhone.xib */,
@@ -104,12 +135,34 @@
 		EB48A1BF152660C8008DB3F9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBC6F8E415266A7C00BC5A73 /* Localizable.strings */,
 				EB48A1C0152660C8008DB3F9 /* Bandeco-Info.plist */,
 				EB48A1C1152660C8008DB3F9 /* InfoPlist.strings */,
 				EB48A1C4152660C8008DB3F9 /* main.m */,
 				EB48A1C6152660C8008DB3F9 /* Bandeco-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBC6F8F415267D9100BC5A73 /* HTML-Parser */ = {
+			isa = PBXGroup;
+			children = (
+				EBC6F8F515267DA200BC5A73 /* HTMLNode.h */,
+				EBC6F8F615267DA200BC5A73 /* HTMLNode.m */,
+				EBC6F8F715267DA200BC5A73 /* HTMLParser.h */,
+				EBC6F8F815267DA200BC5A73 /* HTMLParser.m */,
+			);
+			name = "HTML-Parser";
+			path = Bandeco;
+			sourceTree = "<group>";
+		};
+		EBE423A81526B556009D194F /* XML-Parser */ = {
+			isa = PBXGroup;
+			children = (
+				EBE423A91526B56C009D194F /* XMLReader.h */,
+				EBE423AA1526B56C009D194F /* XMLReader.m */,
+			);
+			name = "XML-Parser";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +199,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
+				"pt-PT",
+				"pt-BR",
 			);
 			mainGroup = EB48A1A9152660C8008DB3F9;
 			productRefGroup = EB48A1B5152660C8008DB3F9 /* Products */;
@@ -167,6 +223,7 @@
 				EB48A1D5152660C8008DB3F9 /* MasterViewController_iPad.xib in Resources */,
 				EB48A1D8152660C8008DB3F9 /* DetailViewController_iPhone.xib in Resources */,
 				EB48A1DB152660C8008DB3F9 /* DetailViewController_iPad.xib in Resources */,
+				EBC6F8E215266A7C00BC5A73 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,10 +234,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE423AB1526B66D009D194F /* XMLReader.m in Sources */,
+				EBE423A61526A3D2009D194F /* HTMLNode.m in Sources */,
+				EBE423A71526A3D2009D194F /* HTMLParser.m in Sources */,
 				EB48A1C5152660C8008DB3F9 /* main.m in Sources */,
 				EB48A1C9152660C8008DB3F9 /* AppDelegate.m in Sources */,
 				EB48A1CC152660C8008DB3F9 /* MasterViewController.m in Sources */,
 				EB48A1CF152660C8008DB3F9 /* DetailViewController.m in Sources */,
+				EBC6F8F0152674BF00BC5A73 /* SecondViewController.m in Sources */,
+				EBC6F8F315267A2E00BC5A73 /* DownloadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +289,14 @@
 			name = DetailViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
+		EBC6F8E415266A7C00BC5A73 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBC6F8E315266A7C00BC5A73 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -250,6 +320,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -269,6 +340,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -282,8 +354,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bandeco/Bandeco-Prefix.pch";
+				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = "Bandeco/Bandeco-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -293,8 +367,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bandeco/Bandeco-Prefix.pch";
+				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = "Bandeco/Bandeco-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -318,6 +394,7 @@
 				EB48A1E0152660C8008DB3F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,6 +17,7 @@
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 @synthesize splitViewController = _splitViewController;
+@synthesize masterViewController = _masterViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -26,6 +27,8 @@
         MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController_iPhone" bundle:nil];
         self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
         self.window.rootViewController = self.navigationController;
+        
+        self.masterViewController = masterViewController;
     } else {
         MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController_iPad" bundle:nil];
         UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
@@ -34,6 +37,8 @@
         UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
     	
     	masterViewController.detailViewController = detailViewController;
+        
+        self.masterViewController = masterViewController;
     	
         self.splitViewController = [[UISplitViewController alloc] init];
         self.splitViewController.delegate = detailViewController;
@@ -53,6 +58,8 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    
+    [self.masterViewController saveData];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -69,6 +76,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [self.masterViewController saveData];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

@@ -20,12 +20,16 @@
 		EB48A1D8152660C8008DB3F9 /* DetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB48A1D6152660C8008DB3F9 /* DetailViewController_iPhone.xib */; };
 		EB48A1DB152660C8008DB3F9 /* DetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB48A1D9152660C8008DB3F9 /* DetailViewController_iPad.xib */; };
 		EBC6F8E215266A7C00BC5A73 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC6F8E415266A7C00BC5A73 /* Localizable.strings */; };
-		EBC6F8F0152674BF00BC5A73 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8EF152674BF00BC5A73 /* SecondViewController.m */; };
 		EBC6F8F315267A2E00BC5A73 /* DownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8F215267A2E00BC5A73 /* DownloadController.m */; };
 		EBC6F8FA15267F6E00BC5A73 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC6F8F915267F6E00BC5A73 /* libxml2.dylib */; };
 		EBE423A61526A3D2009D194F /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8F615267DA200BC5A73 /* HTMLNode.m */; };
 		EBE423A71526A3D2009D194F /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F8F815267DA200BC5A73 /* HTMLParser.m */; };
-		EBE423AB1526B66D009D194F /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EBE423AA1526B56C009D194F /* XMLReader.m */; };
+		EBF1C1BF152746B200AAA0E0 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1C1BE1527468E00AAA0E0 /* XMLReader.m */; };
+		EBF1C1C0152746B600AAA0E0 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1C1BA1527464F00AAA0E0 /* SecondViewController.m */; };
+		EBF1C1C4152751A200AAA0E0 /* Tray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1C1C3152751A200AAA0E0 /* Tray@2x.png */; };
+		EBF1C1C6152751C600AAA0E0 /* Tray.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1C1C5152751C600AAA0E0 /* Tray.png */; };
+		EBF1C1C81527564800AAA0E0 /* Tray-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1C1C71527564800AAA0E0 /* Tray-iPad.png */; };
+		EBF1C1CA1527564B00AAA0E0 /* Tray-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1C1C91527564B00AAA0E0 /* Tray-iPad@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,8 +53,6 @@
 		EB48A1DA152660C8008DB3F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPad.xib; sourceTree = "<group>"; };
 		EBC6F8E315266A7C00BC5A73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EBC6F8EA152670A000BC5A73 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		EBC6F8EE152674BF00BC5A73 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../SecondViewController.h; sourceTree = "<group>"; };
-		EBC6F8EF152674BF00BC5A73 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../SecondViewController.m; sourceTree = "<group>"; };
 		EBC6F8F115267A2E00BC5A73 /* DownloadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadController.h; sourceTree = "<group>"; };
 		EBC6F8F215267A2E00BC5A73 /* DownloadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadController.m; sourceTree = "<group>"; };
 		EBC6F8F515267DA200BC5A73 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
@@ -59,8 +61,15 @@
 		EBC6F8F815267DA200BC5A73 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		EBC6F8F915267F6E00BC5A73 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		EBC6F916152681A200BC5A73 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
-		EBE423A91526B56C009D194F /* XMLReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
-		EBE423AA1526B56C009D194F /* XMLReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		EBF1C1AD1527427F00AAA0E0 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBF1C1B91527464F00AAA0E0 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		EBF1C1BA1527464F00AAA0E0 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		EBF1C1BD1527468E00AAA0E0 /* XMLReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = Bandeco/XMLReader.h; sourceTree = "<group>"; };
+		EBF1C1BE1527468E00AAA0E0 /* XMLReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = Bandeco/XMLReader.m; sourceTree = "<group>"; };
+		EBF1C1C3152751A200AAA0E0 /* Tray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tray@2x.png"; sourceTree = "<group>"; };
+		EBF1C1C5152751C600AAA0E0 /* Tray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tray.png; sourceTree = "<group>"; };
+		EBF1C1C71527564800AAA0E0 /* Tray-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tray-iPad.png"; sourceTree = "<group>"; };
+		EBF1C1C91527564B00AAA0E0 /* Tray-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tray-iPad@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,10 @@
 		EB48A1A9152660C8008DB3F9 = {
 			isa = PBXGroup;
 			children = (
+				EBF1C1C91527564B00AAA0E0 /* Tray-iPad@2x.png */,
+				EBF1C1C71527564800AAA0E0 /* Tray-iPad.png */,
+				EBF1C1C5152751C600AAA0E0 /* Tray.png */,
+				EBF1C1C3152751A200AAA0E0 /* Tray@2x.png */,
 				EB48A1BE152660C8008DB3F9 /* Bandeco */,
 				EBE423A81526B556009D194F /* XML-Parser */,
 				EBC6F8F415267D9100BC5A73 /* HTML-Parser */,
@@ -117,8 +130,8 @@
 				EB48A1C8152660C8008DB3F9 /* AppDelegate.m */,
 				EB48A1CA152660C8008DB3F9 /* MasterViewController.h */,
 				EB48A1CB152660C8008DB3F9 /* MasterViewController.m */,
-				EBC6F8EE152674BF00BC5A73 /* SecondViewController.h */,
-				EBC6F8EF152674BF00BC5A73 /* SecondViewController.m */,
+				EBF1C1B91527464F00AAA0E0 /* SecondViewController.h */,
+				EBF1C1BA1527464F00AAA0E0 /* SecondViewController.m */,
 				EB48A1CD152660C8008DB3F9 /* DetailViewController.h */,
 				EB48A1CE152660C8008DB3F9 /* DetailViewController.m */,
 				EBC6F8F115267A2E00BC5A73 /* DownloadController.h */,
@@ -159,8 +172,8 @@
 		EBE423A81526B556009D194F /* XML-Parser */ = {
 			isa = PBXGroup;
 			children = (
-				EBE423A91526B56C009D194F /* XMLReader.h */,
-				EBE423AA1526B56C009D194F /* XMLReader.m */,
+				EBF1C1BD1527468E00AAA0E0 /* XMLReader.h */,
+				EBF1C1BE1527468E00AAA0E0 /* XMLReader.m */,
 			);
 			name = "XML-Parser";
 			sourceTree = "<group>";
@@ -202,6 +215,7 @@
 				ja,
 				"pt-PT",
 				"pt-BR",
+				pt,
 			);
 			mainGroup = EB48A1A9152660C8008DB3F9;
 			productRefGroup = EB48A1B5152660C8008DB3F9 /* Products */;
@@ -224,6 +238,10 @@
 				EB48A1D8152660C8008DB3F9 /* DetailViewController_iPhone.xib in Resources */,
 				EB48A1DB152660C8008DB3F9 /* DetailViewController_iPad.xib in Resources */,
 				EBC6F8E215266A7C00BC5A73 /* Localizable.strings in Resources */,
+				EBF1C1C4152751A200AAA0E0 /* Tray@2x.png in Resources */,
+				EBF1C1C6152751C600AAA0E0 /* Tray.png in Resources */,
+				EBF1C1C81527564800AAA0E0 /* Tray-iPad.png in Resources */,
+				EBF1C1CA1527564B00AAA0E0 /* Tray-iPad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,14 +252,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE423AB1526B66D009D194F /* XMLReader.m in Sources */,
+				EBF1C1C0152746B600AAA0E0 /* SecondViewController.m in Sources */,
+				EBF1C1BF152746B200AAA0E0 /* XMLReader.m in Sources */,
 				EBE423A61526A3D2009D194F /* HTMLNode.m in Sources */,
 				EBE423A71526A3D2009D194F /* HTMLParser.m in Sources */,
 				EB48A1C5152660C8008DB3F9 /* main.m in Sources */,
 				EB48A1C9152660C8008DB3F9 /* AppDelegate.m in Sources */,
 				EB48A1CC152660C8008DB3F9 /* MasterViewController.m in Sources */,
 				EB48A1CF152660C8008DB3F9 /* DetailViewController.m in Sources */,
-				EBC6F8F0152674BF00BC5A73 /* SecondViewController.m in Sources */,
 				EBC6F8F315267A2E00BC5A73 /* DownloadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +311,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EBC6F8E315266A7C00BC5A73 /* en */,
+				EBF1C1AD1527427F00AAA0E0 /* pt */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -306,7 +325,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -322,6 +341,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -333,7 +353,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -343,6 +363,7 @@
 				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -352,11 +373,13 @@
 		EB48A1DF152660C8008DB3F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PEDRO P M GOES";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bandeco/Bandeco-Prefix.pch";
 				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = "Bandeco/Bandeco-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F4CE71CE-87F3-4ECB-8C04-9F96C44FA750";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -365,11 +388,13 @@
 		EB48A1E0152660C8008DB3F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PEDRO P M GOES";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bandeco/Bandeco-Prefix.pch";
 				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = "Bandeco/Bandeco-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F4CE71CE-87F3-4ECB-8C04-9F96C44FA750";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};

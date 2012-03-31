@@ -38,11 +38,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self loadData];
+    
     UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", @"About the developer") 
-                                                                     style:UIBarButtonItemStyleBordered target:self action:@selector(about:)];
+                                                                     style:UIBarButtonItemStyleBordered target:self action:@selector(about)];
     self.navigationItem.leftBarButtonItem = aboutButton;
 
-    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateData:)];
+    UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateData)];
     self.navigationItem.rightBarButtonItem = reloadButton;
     
     self.daysOfWeek = [[NSMutableArray alloc] initWithObjects:
@@ -52,13 +55,12 @@
                          NSLocalizedString(@"Thursday", @"Thursday"),
                          NSLocalizedString(@"Friday", @"Friday"),
                          NSLocalizedString(@"Saturday", @"Saturday"),
-                         NSLocalizedString(@"Sunday", @"Sunday"),
                          nil];   
 
     
     keysDaysOfWeek = [[NSArray alloc] initWithObjects:@"segunda", @"terca", @"quarta", @"quinta", @"sexta", @"sabado", nil];
     
-    
+    [self checkDate];
     
 }
 
@@ -77,13 +79,32 @@
     }
 }
 
-- (void)updateData:(id)sender {
+#pragma mark - IO Methods
+
+- (void)saveData {
+   [NSKeyedArchiver archiveRootObject:self.menu toFile:[[NSHomeDirectory() stringByAppendingPathComponent: @"Documents"] stringByAppendingPathComponent:ARQUIVO]];
+    
+
+}
+
+- (void)loadData {
+    id root = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSHomeDirectory() stringByAppendingPathComponent: @"Documents"] stringByAppendingPathComponent:ARQUIVO]];
+    if (root) {
+        self.menu = root;
+    } else {
+        self.menu = nil;
+    }
+}
+
+#pragma mark - User Methods
+
+- (void)updateData {
     DownloadController * downloadController = [DownloadController sharedDownloadController];
     downloadController.delegate = self;
     [downloadController addURL:CACHE_PADRAO_URL savingAs:CACHE_PADRAO_ARQUIVO];
 }
 
-- (IBAction)about:(id)sender {
+- (void)about {
 	
 	UIAlertView *alert = [[UIAlertView alloc] 
 						  initWithTitle:NSLocalizedString(@"About", @"About the developer")  
@@ -93,7 +114,28 @@
 						  otherButtonTitles:nil];
 	[alert show];
 }
-	
+
+- (void)checkDate {
+    if (!self.menu) {
+        [self updateData];
+        return;
+    }
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd/MM/yyyy"];
+    NSDate *dateUpdate = [df dateFromString:[[[self.menu objectForKey:@"restaurante"] objectForKey:@"sabado"] objectForKey:@"data"]];
+    dateUpdate = [dateUpdate dateByAddingTimeInterval:60*60*24];
+    NSDate  *now = [NSDate date];
+    
+    // The receiver is later in time than the update's time 
+    if ([now compare:dateUpdate] == NSOrderedDescending) {
+        [self updateData];
+    }
+    
+    
+    
+    
+}
 
 #pragma mark - Table View
 
@@ -169,10 +211,15 @@
         self.secondViewController.lastDayOfTheWeek = NO;
     }
     
-    self.secondViewController.title = NSLocalizedString(@"Time", @"The second or third meal");
+    self.secondViewController.title = [self.daysOfWeek objectAtIndex:[indexPath row]];
     self.secondViewController.infoMenu = [[self.menu objectForKey:@"restaurante"] objectForKey:[keysDaysOfWeek objectAtIndex:[indexPath row]]];
     
+    // Since we're keeping a pointer to it, we need to force the (possible) update
+    [self.secondViewController.tableView reloadData];
+    
     [self.navigationController pushViewController:self.secondViewController animated:YES];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     /*
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

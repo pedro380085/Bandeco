@@ -15,32 +15,34 @@
 
 @implementation DetailViewController
 
-@synthesize detailItem = _detailItem;
-@synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize textView = _textView;
 @synthesize masterPopoverController = _masterPopoverController;
-@synthesize infoMenu;
+@synthesize infoMenu = _infoMenu;
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+- (void)setInfoMenu:(NSDictionary *)newInfoMenu {
+    
+    if (_infoMenu != newInfoMenu) {
+        _infoMenu = newInfoMenu;
         
         // Update the view.
         [self configureView];
     }
-
-    if (self.masterPopoverController != nil) {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
 }
 
 - (void)configureView
 {
     // Update the user interface for the detail item.
+    
+    NSString *text =[NSString string];
+    NSArray *allValues = [self.infoMenu allValues];
+    
+    for (NSString *value in allValues) {
+        text = [text stringByAppendingFormat:@"%@\n", value];
+    }
 
-    self.detailDescriptionLabel.text = [self.infoMenu description];
+    self.textView.text = text;
 }
 
 - (void)viewDidLoad
@@ -58,7 +60,7 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.detailDescriptionLabel = nil;
+    self.textView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

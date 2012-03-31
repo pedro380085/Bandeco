@@ -20,4 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *daysOfWeek;
 @property (strong, nonatomic) NSDictionary *menu;
 
+- (void)loadData;
+- (void)saveData;
+
 @end

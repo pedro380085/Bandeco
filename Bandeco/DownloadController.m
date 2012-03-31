@@ -40,9 +40,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DownloadController);
  
  DOWNLOAD_URL: Url completa do arquivo a ser baixado
  DOWNLOAD_ARQUIVO: Nome do arquivo a ser baixado
- DOWNLOAD_CELULA: Célula para o valor da tag informada
- DOWNLOAD_TAG: Célula para o valor da tag informada
- DOWNLOAD_CACHE: Informa se é cache ou não
  
  
  */
@@ -114,20 +111,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DownloadController);
 
 - (void)parseCache {
     
-    /*
-    if (!delegate.menu) {
-        delegate.menu = [[NSDictionary alloc] initWithCapacity:11];
-    } else {
-        [delegate.menu removeAllObjects];
-    }
-     */
-    
     NSError *error = nil;
     
     // Loading the just download xml file
     NSString *xml = [NSString stringWithContentsOfFile:[[NSHomeDirectory() stringByAppendingPathComponent:  @"Documents"] stringByAppendingPathComponent: CACHE_PADRAO_ARQUIVO] 
                                                encoding:NSISOLatin1StringEncoding
                                                   error:&error];
+    //NSLog(@"%@", xml);
+
     
     delegate.menu = [XMLReader dictionaryForXMLString:xml error:&error];
     
@@ -180,7 +171,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DownloadController);
         }
     }
     */
-    //[delegate carregarCache];
 }
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED <= 40302
@@ -198,50 +188,32 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DownloadController);
 {    
     // Adiciona os dados recebidos a variável
     [dadosRecebidos appendData:data];
-    
-    [self atualizarInterfaceComProgresso:((float)[dadosRecebidos length] / (float)[[[fila lastObject] objectForKey:DOWNLOAD_TAMANHO] intValue])
-                                comTexto:[NSString stringWithFormat:@"%d %%", (int) (100 * (float)[dadosRecebidos length] / (float)[[[fila lastObject] objectForKey:DOWNLOAD_TAMANHO] intValue])]
-                                 comPath:nil];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    // Libera os objetos
-    [connection release];
-    [dadosRecebidos release];
-    
     // Atualiza interface
-    CustomCell * celula = (CustomCell *)[delegate.tableView cellForRowAtIndexPath:[[fila lastObject] objectForKey:DOWNLOAD_PATH]];
-    celula.porcentagemTexto.text = @"Download falhou!";
-    [self performSelector:@selector(restaurarInterface) withObject:nil afterDelay:0.4];
+    [self updateInterfaceWithText:@"Download falhou!"];
+    [self performSelector:@selector(restoreInterface) withObject:nil afterDelay:0.4];
     
     // Atualiza a flag pois o download falhou
 	baixando = NO;
     
     // Inicia o próximo download
-    [self iniciarDownload];
+    [self initDownload];
     
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {	
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[dadosRecebidos length]);
-	
 	// Salvando array em arquivo
     NSString * caminho = [[NSHomeDirectory() stringByAppendingPathComponent:  @"Documents"]
                           stringByAppendingPathComponent:[[fila lastObject] objectForKey:DOWNLOAD_ARQUIVO]];
 	[dadosRecebidos writeToFile:caminho atomically:YES];
-	
-    // Libera os objetos
-    [connection release];
-    [dadosRecebidos release];
     
     // Atualiza interface
-    CustomCell * celula = (CustomCell *)[delegate.tableView cellForRowAtIndexPath:[[fila lastObject] objectForKey:DOWNLOAD_PATH]];
-    celula.porcentagemTexto.text = @"Download completo!";
-    [self performSelector:@selector(restaurarInterface) withObject:nil afterDelay:0.4];
+    [self updateInterfaceWithText:@"Download completo!"];
+    [self restoreInterface];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     // Remove o download completado da fila
@@ -250,11 +222,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DownloadController);
     // Atualiza a flag pois o download terminou
 	baixando = NO;
     
-    // Informa a célula que o download terminou
-    celula.estadoDownload = NO;
-    
     // Inicia o próximo download
-    [self iniciarDownload];
+    [self initDownload];
 }
 
 #endif

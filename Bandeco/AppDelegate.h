@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class MasterViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -15,5 +17,7 @@
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) UISplitViewController *splitViewController;
+
+@property (strong, nonatomic) MasterViewController *masterViewController;
 
 @end

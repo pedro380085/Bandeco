@@ -373,14 +373,14 @@
 		EB48A1DF152660C8008DB3F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PEDRO P M GOES";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bandeco/Bandeco-Prefix.pch";
 				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = "Bandeco/Bandeco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F4CE71CE-87F3-4ECB-8C04-9F96C44FA750";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -389,14 +389,14 @@
 		EB48A1E0152660C8008DB3F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PEDRO P M GOES";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bandeco/Bandeco-Prefix.pch";
 				HEADER_SEARCH_PATHS = $SDK_DIR/usr/include/libxml2;
 				INFOPLIST_FILE = "Bandeco/Bandeco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F4CE71CE-87F3-4ECB-8C04-9F96C44FA750";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};

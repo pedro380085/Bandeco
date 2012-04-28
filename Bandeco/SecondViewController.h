@@ -12,11 +12,13 @@
 
 @interface SecondViewController : UITableViewController {
     BOOL lastDayOfTheWeek;
+    NSInteger indexOfCellToPush;
     NSArray *keysTime;
     NSMutableArray *typeOfMeal;
 }
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (assign, nonatomic) NSInteger indexOfCellToPush;
 @property (assign, nonatomic) BOOL lastDayOfTheWeek;
 @property (assign, nonatomic) NSDictionary *infoMenu;
 

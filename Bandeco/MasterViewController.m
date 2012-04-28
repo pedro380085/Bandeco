@@ -61,7 +61,12 @@
     keysDaysOfWeek = [[NSArray alloc] initWithObjects:@"segunda", @"terca", @"quarta", @"quinta", @"sexta", @"sabado", nil];
     
     [self checkDate];
-    
+    shouldGoToDate = YES;
+    indexOfCellToPush = -1;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self goToDate];
 }
 
 - (void)viewDidUnload
@@ -125,16 +130,52 @@
     [df setDateFormat:@"dd/MM/yyyy"];
     NSDate *dateUpdate = [df dateFromString:[[[self.menu objectForKey:@"restaurante"] objectForKey:@"sabado"] objectForKey:@"data"]];
     dateUpdate = [dateUpdate dateByAddingTimeInterval:60*60*24];
-    NSDate  *now = [NSDate date];
+    NSDate *now = [NSDate date];
     
     // The receiver is later in time than the update's time 
     if ([now compare:dateUpdate] == NSOrderedDescending) {
         [self updateData];
     }
-    
-    
-    
-    
+}
+
+- (void)goToDate {
+    if (shouldGoToDate) {
+        shouldGoToDate = NO;
+        
+        if (!self.menu) {
+            [self updateData];
+            return;
+        }
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents * components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSWeekdayCalendarUnit) fromDate:[NSDate date]];
+        NSInteger hour = [components hour];
+        //NSInteger minutes = [components minute];
+        NSInteger weekDay = [components weekday];
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"dd/MM/yyyy"];
+        NSString *day = [df stringFromDate:[NSDate date]];
+        
+        NSDictionary *restaurant = [self.menu objectForKey:@"restaurante"];
+        for (NSString *key in restaurant) {
+            if ([[[restaurant valueForKey:key] objectForKey:@"data"] isEqualToString: day]) {
+                if (hour <=13) {
+                    indexOfCellToPush = 0;
+                    [self tableView:dataTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:[keysDaysOfWeek indexOfObject:key] inSection:0]];
+                } else if (weekDay != 7) {
+                    if (hour <=19) {
+                        indexOfCellToPush = 1;
+                        [self tableView:dataTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:[keysDaysOfWeek indexOfObject:key] inSection:0]];
+                    } else {
+                        indexOfCellToPush = 0;
+                        [self tableView:dataTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:([keysDaysOfWeek indexOfObject:key] + 1) inSection:0]];
+                    }
+                }
+                break;
+            }
+        }
+    }
 }
 
 #pragma mark - Table View
@@ -170,34 +211,6 @@
     return NO;
 }
 
-/*
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -213,6 +226,10 @@
     
     self.secondViewController.title = [self.daysOfWeek objectAtIndex:[indexPath row]];
     self.secondViewController.infoMenu = [[self.menu objectForKey:@"restaurante"] objectForKey:[keysDaysOfWeek objectAtIndex:[indexPath row]]];
+    self.secondViewController.indexOfCellToPush = indexOfCellToPush;
+    
+    // Reseting the var after the first run
+    indexOfCellToPush = -1;
     
     // Since we're keeping a pointer to it, we need to force the (possible) update
     [self.secondViewController.tableView reloadData];

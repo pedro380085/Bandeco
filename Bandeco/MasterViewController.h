@@ -13,6 +13,10 @@
 
 @interface MasterViewController : UITableViewController {
     NSArray *keysDaysOfWeek;
+    IBOutlet UITableView *dataTableView;
+    
+    BOOL shouldGoToDate;
+    NSInteger indexOfCellToPush;
 }
 
 @property (strong, nonatomic) DetailViewController *detailViewController;

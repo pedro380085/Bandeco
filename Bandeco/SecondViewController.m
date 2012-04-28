@@ -16,7 +16,7 @@
 @implementation SecondViewController
 
 @synthesize detailViewController = _detailViewController;
-@synthesize lastDayOfTheWeek, infoMenu;
+@synthesize indexOfCellToPush, lastDayOfTheWeek, infoMenu;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,7 +43,10 @@
                          nil];
     
     keysTime = [[NSArray alloc] initWithObjects:@"almoco", @"jantar", nil];
+}
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self pushCell];
 }
 
 - (void)viewDidUnload
@@ -60,6 +63,18 @@
     } else {
         return YES;
     }
+}
+
+#pragma mark - User Methods
+
+- (void)pushCell {
+    if (indexOfCellToPush == 0) {
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    } else if (indexOfCellToPush == 1) {
+        [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    }
+    
+    indexOfCellToPush = -1;
 }
 
 #pragma mark - Table view data source
@@ -143,6 +158,7 @@
 	        self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController_iPhone" bundle:nil];
 	    }
         self.detailViewController.infoMenu = [self.infoMenu objectForKey:[keysTime objectAtIndex:[indexPath row]]];
+        self.detailViewController.title = [typeOfMeal objectAtIndex:[indexPath row]];
         
         [self.navigationController pushViewController:self.detailViewController animated:YES];
     } else {
